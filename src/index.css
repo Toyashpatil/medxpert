@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+* {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+
 .gradient_button {
     background: rgb(135, 113, 235);
     background: -moz-linear-gradient(90deg, rgba(135, 113, 235, 1) 0%, rgba(205, 192, 233, 1) 100%);
@@ -9,10 +18,11 @@
     background: linear-gradient(90deg, rgba(135, 113, 235, 1) 0%, rgba(205, 192, 233, 1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#8771eb", endColorstr="#cdc0e9", GradientType=1);
 }
-.gradient_wall{
-    background: rgb(234,224,255);
-    background: -moz-linear-gradient(135deg, rgba(234,224,255,1) 0%, rgba(251,251,253,1) 100%);
-    background: -webkit-linear-gradient(135deg, rgba(234,224,255,1) 0%, rgba(251,251,253,1) 100%);
-    background: linear-gradient(135deg, rgba(234,224,255,1) 0%, rgba(251,251,253,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eae0ff",endColorstr="#fbfbfd",GradientType=1);
+
+.gradient_wall {
+    background: rgb(234, 224, 255);
+    background: -moz-linear-gradient(135deg, rgba(234, 224, 255, 1) 0%, rgba(251, 251, 253, 1) 100%);
+    background: -webkit-linear-gradient(135deg, rgba(234, 224, 255, 1) 0%, rgba(251, 251, 253, 1) 100%);
+    background: linear-gradient(135deg, rgba(234, 224, 255, 1) 0%, rgba(251, 251, 253, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eae0ff", endColorstr="#fbfbfd", GradientType=1);
 }
