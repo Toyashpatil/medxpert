@@ -17,11 +17,11 @@ const Landing = () => {
                     <img src={Nurse} ></img>
                 </div>
                 <div className=' flex items-center justify-center'>
-                    <h1 className=' font-bold text-[40px]'>MEDXPERT</h1>
+                    <h1 className=' font-bold text-[40px]'>MedXpert</h1>
                 </div>
                 <div className=' flex items-center justify-center'>
-                    <div className='  justify-center'>
-                        <h1 className=' font-semibold text-center'>One-Stop <span className='text-[#734F96] font-bold underline'>Solution</span> </h1>
+                    <div className='justify-center'>
+                        <h1 className=' font-semibold text-center'>One-Stop <span className='text-[#8771EB] font-bold underline'>Solution</span> </h1>
                         <h1 className='font-bold'>To All your Health Care need</h1>
                     </div>
 
