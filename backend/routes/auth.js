@@ -101,7 +101,7 @@ router.get('/google/callback',
         const data = res.req.user;
         const decoded = jwt.decode(data.id_token)
         console.log(decoded)
-        res.redirect("https://medxpert-phi.vercel.app/")
+        res.redirect("http://localhost:3000/home")
         // let token = null
         // try {
         //     let success = false;

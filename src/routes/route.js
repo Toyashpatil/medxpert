@@ -2,6 +2,7 @@ import React from "react";
 import Landing from "../pages/Landing";
 import SignUp from "../pages/SignUp";
 import Password from "../pages/Password";
+import Home from "../pages/Home";
 
 
 const routes = [
@@ -16,7 +17,12 @@ const routes = [
     {
         path:"/password",
         element:<Password/>,
-    }
+    },
+    {
+        path: "/home",
+        element: <Home/>,
+    },
+
 ];
 
 export default routes;
