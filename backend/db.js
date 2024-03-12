@@ -6,7 +6,7 @@ const mongoURI = 'mongodb+srv://toyashpatil17:7TNQimvPkup5cakr@medxpert.memkczc.
 
 const connectTOMongo = async () => {
     await mongoose.connect(mongoURI);
-    console.log("Connected to Mongodb")
+    console.log("Connected to Mongodb database")
 
 
 
