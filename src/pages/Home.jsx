@@ -71,7 +71,7 @@ const Home = () => {
                             </div>
                             <div className='flex items-center justify-center mt-2 w-[100%] '>
 
-                                <a href='tel:+91 112'>
+                                <a href='tel:112'>
                                     <button>
                                         <div className='bg-[#ffff] zoom-in-out-box h-[100px] w-[100px] rounded-full flex hover:ring-[20px] items-center justify-center'>
                                             <div>
@@ -103,7 +103,15 @@ const Home = () => {
                                             <img src={dp}></img>
                                         </div>
                                         <div>
-                                            <h1 className='text-white font-semibold text-xl'>Dr. Khushi Poojary</h1>
+                                            <div>
+                                                <h1 className='text-white font-semibold text-xl'>Dr. Khushi Poojary</h1>
+
+                                            </div>
+                                            <div>
+                                                <h1 className='text-white font-semibold text-sm'>Cardiologist</h1>
+
+                                            </div>
+
                                         </div>
                                     </div>
                                     <div className='flex items-center justify-center'>
@@ -141,7 +149,15 @@ const Home = () => {
                                             <img src={dp}></img>
                                         </div>
                                         <div>
-                                            <h1 className='text-white font-semibold text-xl'>Dr. Khushi Poojary</h1>
+                                            <div>
+                                                <h1 className='text-white font-semibold text-xl'>Dr. Natasha Lunn</h1>
+
+                                            </div>
+                                            <div>
+                                                <h1 className='text-white font-semibold text-sm'>Dermatologist</h1>
+
+                                            </div>
+
                                         </div>
                                     </div>
                                     <div className='flex items-center justify-center'>
