@@ -64,7 +64,7 @@ const SignUp = () => {
                 </div>
                 <div className=' flex items-center mt-2 justify-center w-[100%]'>
                     <div className='mt-3'>
-                        <h2>Already have an account? <span onClick={() => { alert("Click") }} className='text-[#8771EB]'>Log in</span> </h2>
+                        <h2>Already have an account? <span onClick={() => { navigate('/home') }} className='text-[#8771EB]'>Log in</span> </h2>
                     </div>
                 </div>
 

@@ -39,7 +39,7 @@ const Landing = () => {
                 </div>
                 <div className=' w-[100%] flex items-center justify-center'>
                     <div className=' gap-2 flex drop-shadow-md border-4 border-[#8771EB] shadow-md rounded-lg  p-3  w-[80%] items-center justify-center'>
-                        <div><a href='http://localhost:5000/auth/google'><button className='text-xl font-bold text-black'>Login</button></a></div>
+                        <div><button onClick={()=>{navigate('/home')}} className='text-xl font-bold text-black'>Login</button></div>
                         <div>
                             <img src={google} className='w-[20px]'></img>
                         </div>

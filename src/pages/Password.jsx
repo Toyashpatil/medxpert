@@ -40,7 +40,7 @@ const Password = () => {
                 </div>
                 <div className='   w-[100%] flex items-center justify-center'>
                     <div className='flex rounded-lg shadow-md drop-shadow-md  p-3  w-[80%] items-center gradient_button justify-center'>
-                        <button className='text-xl font-bold text-white '>SignUp</button>
+                        <button onClick={()=>{navigate('/home')}} className='text-xl font-bold text-white '>SignUp</button>
                     </div>
                 </div>
                 <div className='flex items-center justify-center w-[100%]'>
