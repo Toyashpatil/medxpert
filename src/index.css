@@ -26,3 +26,28 @@
     background: linear-gradient(135deg, rgba(234, 224, 255, 1) 0%, rgba(251, 251, 253, 1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eae0ff", endColorstr="#fbfbfd", GradientType=1);
 }
+.parent-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  .child-container {
+    flex: 1 1 45%;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+  }
+  
+  @media (max-width: 768px) {
+    .child-container {
+      flex: 1 1 100%;
+    }
+  }
