@@ -42,3 +42,28 @@
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.18);
 }
+.parent-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  .child-container {
+    flex: 1 1 45%;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+  }
+  
+  @media (max-width: 768px) {
+    .child-container {
+      flex: 1 1 100%;
+    }
+  }
