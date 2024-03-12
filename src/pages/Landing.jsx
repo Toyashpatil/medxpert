@@ -23,7 +23,7 @@ const Landing = () => {
                 <div className=' flex items-center justify-center'>
                     <div className='justify-center'>
                         <h1 className=' font-semibold text-center'>One-Stop <span className='text-[#8771EB] font-bold underline'>Solution</span> </h1>
-                        <h1 className='font-bold'>To All your Health Care need</h1>
+                        <h1 className='font-bold'>To All your Health care need</h1>
                     </div>
 
 
