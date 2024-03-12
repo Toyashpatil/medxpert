@@ -101,6 +101,7 @@ router.get('/google/callback',
         const data = res.req.user;
         const decoded = jwt.decode(data.id_token)
         console.log(decoded)
+        res.redirect("https://medxpert-phi.vercel.app/")
         // let token = null
         // try {
         //     let success = false;
@@ -152,9 +153,10 @@ router.get('/logout', (req, res) => {
                 return res.status(500).send('Error destroying session');
             }
 
+
             // Session destroyed, send response to the client
             res.send('Logout successful');
-            res.redirect('http://localhost:5000/')
+            // res.redirect('http://localhost:5000/')
         });
     });
 });

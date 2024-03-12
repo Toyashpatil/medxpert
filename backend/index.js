@@ -5,6 +5,7 @@ const passport = require('passport')
 const session = require('express-session');
 const app = express();
 require('./passport')
+require('dotenv').config()
 
 
 
