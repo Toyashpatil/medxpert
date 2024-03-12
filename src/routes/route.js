@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import Doctors from "../pages/Doctors"
 import Appointment from "../pages/Appointment";
 import Test from "../pages/Test";
+import ComingSoon from "../pages/ComingSoon";
 
 const routes = [
     {
@@ -36,6 +37,10 @@ const routes = [
     {
         path:"/test",
         element:<Test/>,
+    },
+    {
+        path:"/comingsoon",
+        element:<ComingSoon/>,
     },
 
 ];

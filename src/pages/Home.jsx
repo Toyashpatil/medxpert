@@ -51,10 +51,10 @@ const Home = () => {
 
                     </div>
                     <div>
-                        <Link to='/hospital'><img src={navHos} ></img></Link>
+                        <img src={navHos} ></img>
                     </div>
                     <div>
-                        <Link to='/profile'><img src={navProfile} ></img></Link>
+                        <img src={navProfile} ></img>
                     </div>
                 </div>
             </div>
