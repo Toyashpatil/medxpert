@@ -1,8 +1,9 @@
 import React from 'react'
+import arrow from "../assets/Images/Left Arrow.png"
 
 const Home = () => {
     return (
-        <div className='h-fit  gradient_wall flex items-center justify-center  w-[100vw]'>
+        <div className='h-fit p-2 gradient_wall flex items-center justify-center  w-[100vw]'>
             <div className=' fixed bottom-0 z-10  w-[100%] flex items-center justify-center'>
                 <div className='flex  rounded-lg mb-10 shadow-md drop-shadow-md  p-3  w-[80%] items-center gradient_button justify-center'>
                     <button className='text-xl font-bold z-10 text-white '>SignUp</button>
@@ -10,8 +11,8 @@ const Home = () => {
             </div>
             <div className=' h-fit w-[100%] space-y-8'>
 
-                <div className=' flex items-center justify-center'>
-                    <img></img>
+                <div className=' flex items-center justify-start'>
+                    <img src={arrow}></img>
                 </div>
                 <div className=' flex items-center justify-center'>
                     <img  ></img>
