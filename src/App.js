@@ -8,7 +8,7 @@ const App = () => {
     const routings = createBrowserRouter(routes);
 
     return (
-        <div className=' '>
+        <div>
             <RouterProvider router={routings}></RouterProvider>
         </div>
     )
