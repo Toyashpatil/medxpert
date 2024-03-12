@@ -25,7 +25,7 @@ const SignUp = () => {
                     <img onClick={handleBack} src={leftarrow}></img>
                 </div>
                 <div className=' flex items-center justify-center'>
-                    <h1 className='text-3xl font-extrabold '>Sign Up</h1>
+                    <h1 className='text-3xl font-extrabold '>Sign up</h1>
                 </div>
                 <div className='  flex items-center justify-start'>
                     <h1 className='mt-3 font-extrabold '>Complete your Profile</h1>
