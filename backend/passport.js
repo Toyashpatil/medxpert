@@ -5,8 +5,8 @@ var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 
 passport.use(new GoogleStrategy({
-    clientID: process.env.API_Google_Client_ID,
-    clientSecret: process.env.API_Google_Secret_Key,
+    clientID: process.env.API_Client,
+    clientSecret: process.env.API_secret,
     callbackURL: "http://localhost:5000/auth/google/callback",
     passReqToCallback: true
 },
