@@ -27,7 +27,7 @@ const Appointment = () => {
                     <div>
                     
                         <div className='flex items-center justify-center'><h1 className=' font-semibold '>{state.name}</h1></div>
-                        <div className='flex items-center justify-center'><h2>{state.specs}</h2></div>
+                        <div className='flex items-center justify-center'><h2>{state.spec}</h2></div>
                         <div className='flex items-center justify-center'>{state.rating} </div>
                     </div>
 
