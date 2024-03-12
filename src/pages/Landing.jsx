@@ -8,16 +8,17 @@ const Landing = () => {
         navigate('/signup')
     }
     return (
-        <div className='h-[100vh] gradient_wall flex items-center justify-center overflow-hidden w-[100vw]'>
-            <div className=' w-[100%] space-y-8'>
+        <div className='h-[100vh]  gradient_wall flex items-center justify-center overflow-hidden w-[100vw]'>
+            <div className='  w-[100%] space-y-8'>
+
                 <div className=' flex items-center justify-center'>
                     <img src={Health}></img>
                 </div>
                 <div className=' flex items-center justify-center'>
-                    <img src={Nurse} ></img>
+                    <img className='w-[150px]' src={Nurse} ></img>
                 </div>
                 <div className=' flex items-center justify-center'>
-                    <h1 className=' font-bold text-[40px]'>MedXpert</h1>
+                    <h1 className=' font-bold text-[35px]'>MedXpert</h1>
                 </div>
                 <div className=' flex items-center justify-center'>
                     <div className='justify-center'>
