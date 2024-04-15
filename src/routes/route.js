@@ -7,7 +7,10 @@ import Doctors from "../pages/Doctors"
 import Appointment from "../pages/Appointment";
 import Test from "../pages/Test";
 import ComingSoon from "../pages/ComingSoon";
-
+import Landing1 from "../pages/Landing1";
+import Landing2 from "../pages/Landing2";
+import Landing3 from "../pages/Landing3";
+import Details from "../pages/Details";
 const routes = [
     {
         path: "/",
@@ -42,6 +45,22 @@ const routes = [
         path:"/comingsoon",
         element:<ComingSoon/>,
     },
+    {
+        path:"/landing1",
+        element:<Landing1/>,
+    },
+    {
+        path:"/landing2",
+        element:<Landing2/>,
+    },
+    {
+        path:"/landing3",
+        element:<Landing3/>,
+    },
+    {
+        path:"/details",
+        element:<Details/>,
+    }
 
 ];
 

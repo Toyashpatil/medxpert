@@ -37,6 +37,8 @@ const Appointment = () => {
                         <button  className='text-xl font-bold text-white '>Book an Appointment</button>
                     </div>
                 </div>
+                
+                
                 </div>
                 </div>
         )
