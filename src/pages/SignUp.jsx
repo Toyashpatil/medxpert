@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import leftarrow from "../assets/Images/Left Arrow.png"
 import PHOTO from "../assets/Images/signup photo.png"
 import { useNavigate } from 'react-router'
 import Input from '../components/Input'
+import authContext from '../context/authContext'
 const SignUp = () => {
     const navigate = useNavigate()
+    const {initialUserDet, setinitialUserDet} = useContext(authContext);
+
+    
 
     const handleBack = () => {
         navigate(-1)
@@ -15,8 +19,14 @@ const SignUp = () => {
     }
     const handleChange = (e) => {
         let { value, name } = e.target
-        console.log(value, name)
+        setinitialUserDet((prev)=>{
+            return({
+                ...prev,
+                [name]:value,
+            })
+        })
     }
+    console.log(initialUserDet)
     return (
         <div className='h-fit gradient_wall p-4 flex items-start justify-center  w-[100vw]'>
             <div className=' w-[100%] space-y-2'>
@@ -38,7 +48,7 @@ const SignUp = () => {
                 </div>
                 <div className=' space-y-2 '>
                     <div className='flex items-center justify-center'>
-                        <Input onChange={handleChange} upper="Full Name" type="text" name="fullname" placeholder="Full Name" />
+                        <Input onChange={handleChange} upper="Full Name" type="text" name="name" placeholder="Full Name" />
 
                     </div>
                     <div className='flex items-center justify-center'>
@@ -48,7 +58,7 @@ const SignUp = () => {
                         <Input onChange={handleChange} upper="Email" type="email" name="email" placeholder="Email" />
                     </div>
                     <div className='flex items-center justify-center'>
-                        <Input onChange={handleChange} upper="Phone Number" type="tel" name="phone Number" placeholder="Phone Number" />
+                        <Input onChange={handleChange} upper="Phone Number" type="tel" name="phoneNumber" placeholder="Phone Number" />
                     </div>
                 </div>
 

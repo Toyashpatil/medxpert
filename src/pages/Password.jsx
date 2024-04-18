@@ -5,17 +5,50 @@ import Face from "../assets/Images/fb.svg"
 import Apple from "../assets/Images/apple.svg"
 import Input from '../components/Input'
 import { useNavigate } from 'react-router'
+import { useContext } from 'react'
+import authContext from '../context/authContext'
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../firebase'
+
+
 const Password = () => {
 
+    const { initialUserDet, setinitialUserDet } = useContext(authContext);
+
+
+
     const navigate = useNavigate();
+
+    const handleSignup = () => {
+        
+        createUserWithEmailAndPassword(auth, initialUserDet.email, initialUserDet.password)
+            .then((userCredential) => {
+                // Signed up 
+                const user = userCredential.user;
+                console.log(user.uid);
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage)
+                // ..
+            });
+    }
 
     const handleBack = () => {
         navigate(-1)
     }
     const handleChange = (e) => {
         let { value, name } = e.target
-        console.log(value, name)
+        setinitialUserDet((prev) => {
+            return ({
+                ...prev,
+                [name]: value
+            })
+        })
     }
+    console.log(initialUserDet);
     return (
         <div className='h-[100vh] gradient_wall p-4 flex items-start justify-center overflow-hidden w-[100vw]'>
             <div className=' w-[100%] space-y-8'>
@@ -40,7 +73,7 @@ const Password = () => {
                 </div>
                 <div className='   w-[100%] flex items-center justify-center'>
                     <div className='flex rounded-lg shadow-md drop-shadow-md  p-3  w-[80%] items-center gradient_button justify-center'>
-                        <button onClick={()=>{navigate('/home')}} className='text-xl font-bold text-white '>SignUp</button>
+                        <button onClick={handleSignup} className='text-xl font-bold text-white '>SignUp</button>
                     </div>
                 </div>
                 <div className='flex items-center justify-center w-[100%]'>

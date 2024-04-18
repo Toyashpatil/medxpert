@@ -19,17 +19,44 @@ import navDoc from "../assets/Images/navDoctor.svg"
 import navProfile from "../assets/Images/navProfile.svg"
 import { Link, useNavigate } from 'react-router-dom'
 import Loader from '../components/Loader'
+import Navbar from '../components/Navbar'
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from '../firebase'
+import authContext from '../context/authContext'
+import { useContext } from 'react'
 
 
 const Home = () => {
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(true);
+    const [name, setName] = useState()
+    const { uid, setUid, getData, initialUserDet } = useContext(authContext)
+
+
+
+
+    const handleLogout = () => {
+
+    }
+    console.log(uid)
 
     useEffect(() => {
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/auth.user
+                const uid = user.uid;
+                console.log(uid);
+                getData()
+                // ...
+            } else {
+                navigate("/")
+            }
+        });
         // Simulate an API call
         setTimeout(() => {
             setIsLoading(false);
-        }, 500);
+        }, 1000);
     }, []);
 
     if (isLoading) {
@@ -37,27 +64,7 @@ const Home = () => {
     }
     return (
         <div className='h-fit p-4  flex items-start justify-center  w-[100vw]'>
-            <div className=' fixed bottom-0 z-10  w-[100%] flex items-center justify-center'>
-                <div className='flex gap-8  rounded-lg mb-8 shadow-md drop-shadow-md  p-3  w-[80%] items-center bg-[#EBC3F5] justify-center'>
-
-                    <div>
-                        <Link to='/home'>
-                            <img src={navHome} ></img>
-                        </Link>
-                    </div>
-
-                    <div>
-                        <Link to='/doctors'><img src={navDoc} ></img></Link>
-
-                    </div>
-                    <div>
-                        <img src={navHos} ></img>
-                    </div>
-                    <div>
-                        <img src={navProfile} ></img>
-                    </div>
-                </div>
-            </div>
+            <Navbar />
             <div className=' h-fit w-[100%] space-y-4'>
 
                 <div className=' flex items-center justify-start'>
@@ -67,7 +74,7 @@ const Home = () => {
                     <div className=' w-[90%] p-4 flex items-start justify-start rounded-md h-[100%] gradient_card drop-shadow-md shadow-md  '>
                         <div className='w-[100%]'>
                             <div>
-                                <h1 className='text-white font-medium '>Hello, Toyash </h1>
+                                <h1 className='text-white font-medium '>Hello, {initialUserDet?.name} </h1>
                             </div>
                             <div className='flex items-center justify-center mt-2 w-[100%] '>
 

@@ -12,7 +12,7 @@ const Landing = () => {
     //     window.location.href('http://localhost:5000/auth/google')
     // }
     return (
-        <div className='h-[100vh]  gradient_wall flex items-center justify-center overflow-hidden w-[100vw]'>
+        <div className='h-[100vh] p-2  gradient_wall flex items-center justify-center overflow-hidden w-[100vw]'>
             <div className='  w-[100%] space-y-8'>
 
                 
@@ -20,12 +20,12 @@ const Landing = () => {
                     <img className='w-[350px]' src={AppPho} ></img>
                 </div>
                 <div className=' flex items-center justify-center'>
-                    <h1 className=' font-black text-[30px]'>Schedule an Appointment</h1>
+                    <h1 className=' font-black text-[26px]'>Schedule an Appointment</h1>
                 </div>
                 <div className=' flex items-center justify-center'>
                     <div className='justify-center'>
-                        <h1 className=' font-bold text-xl text-center'>schedule an appointment with a</h1>
-                        <h1 className='font-bold text-xl text-center justify-centre'>certified doctor on MedXpert</h1>
+                        <h1 className=' font-bold text-md text-center'>schedule an appointment with a</h1>
+                        <h1 className='font-bold text-md text-center justify-centre'>certified doctor on MedXpert</h1>
                     </div>
 
 
