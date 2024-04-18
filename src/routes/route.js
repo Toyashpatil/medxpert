@@ -11,6 +11,8 @@ import Landing1 from "../pages/Landing1";
 import Landing2 from "../pages/Landing2";
 import Landing3 from "../pages/Landing3";
 import Details from "../pages/Details";
+import Settings from "../pages/Settings";
+import login from "../pages/Login";
 const routes = [
     {
         path: "/",
@@ -60,6 +62,14 @@ const routes = [
     {
         path:"/details",
         element:<Details/>,
+    },
+    {
+        path:"/settings",
+        element:<Settings/>,
+    },
+    {
+        path:"/login",
+        element:<login/>,
     }
 
 ];
