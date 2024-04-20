@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import leftarrow from "../assets/Images/Left Arrow.png"
 import docphoapp from "../assets/Images/ddphoapp.svg"
 import { useNavigate } from 'react-router-dom'
@@ -7,33 +7,101 @@ import DateCard from '../components/DateCard'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import { useState } from "react"
+import authContext from '../context/authContext'
+import { doc, setDoc } from "firebase/firestore";
+import { db } from '../firebase';
+import Loader from '../components/Loader'
+
+
+
+
+
+
 const Appointment = () => {
     const navigate = useNavigate();
     const location = useLocation()
     const state = location.state
+    const { getAppointments, appointmentDetails, setappointmentDetails } = useContext(authContext)
+    const [newApp, setNewApp] = useState({
+        photourl: "no photo"
+    })
     const [value, onChange] = useState(new Date())
     const [appDate, setAppDate] = useState({
         day: null,
         month: null,
         year: null,
     });
-
+    const [isLoading, setIsLoading] = useState(true);
     const yearObj = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const dayObj = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
     // const handleChange=(e)=>{
     //     onChange(value)
     // }
     useEffect(() => {
 
-        setAppDate({
-            day: value.getDate(),
-            month: yearObj[value.getMonth()],
-            year: value.getFullYear(),
-        });
+        getAppointments()
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 1000);
+
+        setNewApp((prev) => {
+            return ({
+                ...prev,
+                name: state.name,
+                speciality: state.spec
+            })
+        })
+
+
+
+    }, [])
+    useEffect(() => {
+
+        setNewApp((prev) => {
+            return ({
+                ...prev,
+                date: value.getDate(),
+                month: yearObj[value.getMonth()],
+                day: dayObj[value.getDay()]
+
+            })
+        })
+
+        // setAppDate({
+        //     date: value.getDate(),
+        //     month: yearObj[value.getMonth()],
+        //     day: dayObj[value.getDay()]
+
+        // });
+        // console.log(value)
 
 
     }, [value])
-    console.log(appDate)
+
+    let uId = localStorage.getItem("user-id");
+    const handleAppointment = async () => {
+        if (!appointmentDetails) {
+            await setDoc(doc(db, "appointments", `${uId}`), {
+                Appointments: [
+                    newApp
+                ]
+            })
+        } else {
+            await setDoc(doc(db, "appointments", `${uId}`), {
+                Appointments: [
+                    ...appointmentDetails,
+                    newApp
+                ]
+            })
+        }
+
+        console.log("add")
+    }
+    // console.log(appDate)
+    if (isLoading) {
+        return <Loader />;
+    }
 
     return (
 
@@ -67,36 +135,92 @@ const Appointment = () => {
                 <div className='flex items-centre justify-start text-2xl font-bold'>Select time</div>
                 <div className='w-[100%] flex items-center justify-between h-[60px]'>
                     <div className=' border-2 border-[#8771EB] rounded-lg p-2 '>
-                        <button>8:00 AM</button>
+                        <button onClick={() => {
+                            setNewApp((prev) => {
+                                return ({
+                                    ...prev,
+                                    time: "8:00 AM"
+                                })
+                            })
+                        }}>8:00 AM</button>
                     </div>
                     <div className=' border-2 border-[#8771EB] rounded-lg p-2 '>
-                        <button>10:00 AM</button>
+                        <button onClick={() => {
+                            setNewApp((prev) => {
+                                return ({
+                                    ...prev,
+                                    time: "10:00 AM"
+                                })
+                            })
+                        }}>10:00 AM</button>
                     </div>
                     <div className=' border-2 border-[#8771EB] rounded-lg p-2 '>
-                        <button>12:00 AM</button>
+                        <button onClick={() => {
+                            setNewApp((prev) => {
+                                return ({
+                                    ...prev,
+                                    time: "12:00 PM"
+                                })
+                            })
+                        }}>12:00 PM</button>
                     </div>
                     <div className=' border-2 border-[#8771EB] rounded-lg p-2 '>
-                        <button>2:00 AM</button>
+                        <button onClick={() => {
+                            setNewApp((prev) => {
+                                return ({
+                                    ...prev,
+                                    time: "2:00 PM"
+                                })
+                            })
+                        }}>2:00 PM</button>
                     </div>
 
                 </div>
                 <div className='w-[100%] flex items-center justify-between h-[60px] '>
                     <div className=' border-2 border-[#8771EB] rounded-lg p-2 '>
-                        <button>4:00 PM</button>
+                        <button onClick={() => {
+                            setNewApp((prev) => {
+                                return ({
+                                    ...prev,
+                                    time: "4:00 PM"
+                                })
+                            })
+                        }}>4:00 PM</button>
                     </div>
                     <div className=' border-2 border-[#8771EB] rounded-lg p-2 '>
-                        <button>6:00 PM</button>
+                        <button onClick={() => {
+                            setNewApp((prev) => {
+                                return ({
+                                    ...prev,
+                                    time: "6:00 PM"
+                                })
+                            })
+                        }}>6:00 PM</button>
                     </div>
                     <div className=' border-2 border-[#8771EB] rounded-lg p-2 '>
-                        <button>8:00 PM</button>
+                        <button onClick={() => {
+                            setNewApp((prev) => {
+                                return ({
+                                    ...prev,
+                                    time: "8:00 PM"
+                                })
+                            })
+                        }}>8:00 PM</button>
                     </div>
                     <div className=' border-2 border-[#8771EB] rounded-lg p-2 '>
-                        <button>10:00 PM</button>
+                        <button onClick={() => {
+                            setNewApp((prev) => {
+                                return ({
+                                    ...prev,
+                                    time: "10:00 PM"
+                                })
+                            })
+                        }}>10:00 PM</button>
                     </div>
                 </div>
                 <div className='   w-[100%] flex items-center justify-center '>
                     <div className='mt-[15px] flex rounded-lg shadow-md drop-shadow-md  p-3  w-[80%] items-center gradient_button justify-center'>
-                        <button className='text-xl font-bold text-white '>Book an Appointment</button>
+                        <button onClick={handleAppointment} className='text-xl font-bold text-white '>Book an Appointment</button>
                     </div>
                 </div>
             </div>

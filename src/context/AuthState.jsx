@@ -7,9 +7,11 @@ const AuthState = ({ children }) => {
   const [uid, setUid] = useState("");
   const [initialUserDet, setinitialUserDet] = useState()
   const [healthDetails, setHealthDetails] = useState({})
+  const [appointmentDetails, setappointmentDetails] = useState(null)
+  let uId = localStorage.getItem('user-id');
 
   const getData = async () => {
-    let uId = localStorage.getItem('user-id');
+
     const docRef = doc(db, "users", `${uId}`);
     const docSnap = await getDoc(docRef);
 
@@ -21,8 +23,21 @@ const AuthState = ({ children }) => {
       console.log("No such document!");
     }
   }
+  const getAppointments = async () => {
+    const docRef = doc(db, "appointments", `${uId}`);
+    const docSnap = await getDoc(docRef);
+
+
+    if (docSnap.exists()) {
+      console.log("Document data:", ...docSnap.data().Appointments);
+      setappointmentDetails([...docSnap.data().Appointments])
+    } else {
+      // docSnap.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }
   return (
-    <authContext.Provider value={{ uid, setUid, initialUserDet, setinitialUserDet, getData, healthDetails, setHealthDetails }} >
+    <authContext.Provider value={{ uid, setUid, initialUserDet, setinitialUserDet, getData, healthDetails, setHealthDetails, getAppointments, appointmentDetails, setappointmentDetails }} >
       {children}
     </authContext.Provider>
   )

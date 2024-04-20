@@ -24,13 +24,20 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../firebase'
 import authContext from '../context/authContext'
 import { useContext } from 'react'
+import AppointmentCard from '../components/AppointmentCard'
 
 
 const Home = () => {
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(true);
     const [name, setName] = useState()
-    const { uid, setUid, getData, initialUserDet } = useContext(authContext)
+    const { uid, setUid, getData, initialUserDet, getAppointments, appointmentDetails, setappointmentDetails } = useContext(authContext)
+    useEffect(() => {
+        getAppointments()
+
+
+    }, [])
+
 
 
 
@@ -101,98 +108,19 @@ const Home = () => {
                     </div>
                 </div>
                 <div className='flex  overflow-x-auto '>
-                    <div className=' gap-2 w-fit flex items-center justify-center  h-[150px]'>
-                        <div className=' flex  w-[330px] h-[8rem] items-start justify-center'>
-                            <div className=' w-[90%] p-2 flex items-center justify-start rounded-md h-[100%] gradient_card   '>
-                                <div className='w-[100%] space-y-3 '>
-                                    <div className='flex gap-6 items-center justify-start'>
-                                        <div>
-                                            <img src={dp}></img>
-                                        </div>
-                                        <div>
-                                            <div>
-                                                <h1 className='text-white font-semibold text-xl'>Dr. Khushi Poojary</h1>
-
-                                            </div>
-                                            <div>
-                                                <h1 className='text-white font-semibold text-sm'>Cardiologist</h1>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div className='flex items-center justify-center'>
-                                        <div className=' glass flex items-center justify-start gap-2 h-[40px] w-[100%] rounded-md '>
-                                            <div className='flex items-center gap-1 justify-center'>
-                                                <div>
-                                                    <img src={cal}></img>
-                                                </div>
-                                                <div>
-                                                    <h1 className='text-sm font-semibold'>Tuesday, 5th August</h1>
-                                                </div>
-                                            </div>
-                                            <div className='flex items-center gap-1 justify-center'>
-                                                <div>
-                                                    <img src={ala}></img>
-                                                </div>
-                                                <div>
-                                                    <h1 className='text-sm font-semibold'>18:00-19:00</h1>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
+                    {appointmentDetails?.map((appointment) => {
+                        return (
+                            <div>
+                                <div>
+                                    <AppointmentCard name={appointment.name} speciality = {appointment.speciality}
+                                        day={appointment.day}
+                                        date={appointment.date}
+                                        month={appointment.month}
+                                        time={appointment.time} />
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className=' gap-2 w-fit flex items-center justify-center  h-[150px]'>
-                        <div className=' flex  w-[330px] h-[8rem] items-start justify-center'>
-                            <div className=' w-[90%] p-2 flex items-center justify-start rounded-md h-[100%] gradient_card   '>
-                                <div className='w-[100%] space-y-3 '>
-                                    <div className='flex gap-6 items-center justify-start'>
-                                        <div>
-                                            <img src={dp}></img>
-                                        </div>
-                                        <div>
-                                            <div>
-                                                <h1 className='text-white font-semibold text-xl'>Dr. Natasha Lunn</h1>
-
-                                            </div>
-                                            <div>
-                                                <h1 className='text-white font-semibold text-sm'>Dermatologist</h1>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div className='flex items-center justify-center'>
-                                        <div className=' glass flex items-center justify-start gap-2 h-[40px] w-[100%] rounded-md '>
-                                            <div className='flex items-center gap-1 justify-center'>
-                                                <div>
-                                                    <img src={cal}></img>
-                                                </div>
-                                                <div>
-                                                    <h1 className='text-sm font-semibold'>Tuesday, 5th August</h1>
-                                                </div>
-                                            </div>
-                                            <div className='flex items-center gap-1 justify-center'>
-                                                <div>
-                                                    <img src={ala}></img>
-                                                </div>
-                                                <div>
-                                                    <h1 className='text-sm font-semibold'>18:00-19:00</h1>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        )
+                    })}
                 </div>
                 <div className=' flex items-center justify-start'>
                     <div className='justify-start'>
