@@ -13,6 +13,7 @@ import Landing3 from "../pages/Landing3";
 import Details from "../pages/Details";
 import Settings from "../pages/Settings";
 import login from "../pages/Login";
+import Hospital from "../pages/Hospital";
 const routes = [
     {
         path: "/",
@@ -70,7 +71,12 @@ const routes = [
     {
         path:"/login",
         element:<login/>,
+    },
+    {
+        path:"/hospital",
+        element:<Hospital/>,
     }
+
 
 ];
 
