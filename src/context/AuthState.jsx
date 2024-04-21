@@ -3,11 +3,19 @@ import authContext from './authContext'
 import { useState } from 'react';
 import { doc, getDoc } from "firebase/firestore";
 import { db } from '../firebase';
+import { collection, query, where, getDocs } from "firebase/firestore";
+
+
+
+
+
+
 const AuthState = ({ children }) => {
   const [uid, setUid] = useState("");
   const [initialUserDet, setinitialUserDet] = useState()
   const [healthDetails, setHealthDetails] = useState({})
   const [appointmentDetails, setappointmentDetails] = useState(null)
+  
   let uId = localStorage.getItem('user-id');
 
   const getData = async () => {
@@ -36,8 +44,11 @@ const AuthState = ({ children }) => {
       console.log("No such document!");
     }
   }
+  
   return (
-    <authContext.Provider value={{ uid, setUid, initialUserDet, setinitialUserDet, getData, healthDetails, setHealthDetails, getAppointments, appointmentDetails, setappointmentDetails }} >
+    <authContext.Provider value={{
+      uid, setUid, initialUserDet, setinitialUserDet, getData, healthDetails, setHealthDetails, getAppointments, appointmentDetails, setappointmentDetails,
+    }} >
       {children}
     </authContext.Provider>
   )

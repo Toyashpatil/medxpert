@@ -1,19 +1,48 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Input from '../components/Input'
 import Docpho from "../assets/Images/docphoto.svg"
 import leftarrow from "../assets/Images/Left Arrow.png"
 import { useNavigate } from 'react-router-dom'
 import Loader from '../components/Loader'
+import authContext from '../context/authContext'
+import { db } from '../firebase';
+import { collection, query, where, getDocs } from "firebase/firestore";
+
+
+
+
 function Doctors() {
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(true);
 
+    const name = "Toyash"
+    const [docDetails, setDocDetails] = useState([])
+    const getDoctors = async () => {
+        const querySnapshot = await getDocs(collection(db, "doctors"));
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            if (doc.exists()) {
+                setDocDetails((prev) => {
+                    return ([...prev,...doc.data().DocData])
+                })
+                console.log(doc.id, " => ", ...doc.data().DocData);
+            }
+
+        });
+    }
+
     useEffect(() => {
         // Simulate an API call
+        
+        const net = () => {
+            getDoctors()
+        }
+        net()
         setTimeout(() => {
             setIsLoading(false);
-        }, 500);
+        }, 1000);
     }, []);
+    console.log(docDetails)
 
     if (isLoading) {
         return <Loader />;
@@ -32,21 +61,12 @@ function Doctors() {
         borderRadius: '5px',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
     };
-    const doctorsData = [
-        { name: "Dr. Patil", specialization: "Dermatologist", rating: "4.5★ (120 reviews)" },
-        { name: "Dr. Smith", specialization: "Cardiologist", rating: "4.8★ (200 reviews)" },
-        { name: "Dr. Johnson", specialization: "Pediatrician", rating: "4.7★ (150 reviews)" },
-        { name: "Dr. Brown", specialization: "Orthopedic Surgeon", rating: "4.6★ (180 reviews)" },
-        { name: "Dr. Martinez", specialization: "Neurologist", rating: "4.9★ (220 reviews)" },
-        { name: "Dr. Lee", specialization: "Ophthalmologist", rating: "4.6★ (160 reviews)" },
-        { name: "Dr. Garcia", specialization: "Gynecologist", rating: "4.7★ (190 reviews)" },
-        { name: "Dr. Robinson", specialization: "Endocrinologist", rating: "4.8★ (210 reviews)" },
-        { name: "Dr. White", specialization: "Psychiatrist", rating: "4.9★ (230 reviews)" },
-        { name: "Dr. Khan", specialization: "Gastroenterologist", rating: "4.5★ (140 reviews)" }
-    ];
+
+    const doctorsData = docDetails
     return (
         <div className='h-fit gradient_wall p-4 flex items-start justify-center  w-[100vw]'>
             <div className=' w-[100%] space-y-2'>
+                <button onClick={getDoctors}>GetDocs</button>
                 {/* <div></div> */}
                 <div className=' flex items-centre justify-start'>
                     <img onClick={() => { navigate(-1) }} src={leftarrow}></img>
@@ -66,7 +86,8 @@ function Doctors() {
                                 state: {
                                     name: doctor.name,
                                     spec: doctor.specialization,
-                                    rating: doctor.rating
+                                    rating: doctor.rating,
+                                    hosp:doctor.hospital,
                                 }
                             })
                         }} key={index} style={parentStyles}>
