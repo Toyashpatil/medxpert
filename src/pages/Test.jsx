@@ -13,6 +13,7 @@ import {
   DialogHeader,
   DialogBody,
   DialogFooter,
+  rating,
 } from "@material-tailwind/react";
 
 const Test = () => {
@@ -20,16 +21,17 @@ const Test = () => {
   const [updated, setUpdated] = useState([])
   const { getAppointments, appointmentDetails, setappointmentDetails } = useContext(authContext);
   // const [docDetails, setDocDetails] = useState([])
-  const Doc = [{ name: "Dr. Patil", specialization: "Dermatologist", rating: "4.5★ (120 reviews)", hospital: "Fortis" },
-  { name: "Dr. Smith", specialization: "Cardiologist", rating: "4.8★ (200 reviews)", hospital: "Fortis" },
-  { name: "Dr. Johnson", specialization: "Pediatrician", rating: "4.7★ (150 reviews)", hospital: "Fortis" },
-  { name: "Dr. Brown", specialization: "Orthopedic Surgeon", rating: "4.6★ (180 reviews)", hospital: "Fortis" },
-  { name: "Dr. Martinez", specialization: "Neurologist", rating: "4.9★ (220 reviews)", hospital: "Fortis" },
-  { name: "Dr. Lee", specialization: "Ophthalmologist", rating: "4.6★ (160 reviews)", hospital: "Fortis" },
-  { name: "Dr. Garcia", specialization: "Gynecologist", rating: "4.7★ (190 reviews)", hospital: "Fortis" },
-  { name: "Dr. Robinson", specialization: "Endocrinologist", rating: "4.8★ (210 reviews)", hospital: "Fortis" },
-  { name: "Dr. White", specialization: "Psychiatrist", rating: "4.9★ (230 reviews)", hospital: "Fortis" },
-  { name: "Dr. Khan", specialization: "Gastroenterologist", rating: "4.5★ (140 reviews)", hospital: "Fortis" }]
+  const hos = [
+    { name: "Lilavati Hospital and Research Centre", mobile: "+1234567890", address:"Thane", rating:"4.5★" },
+    { name: "Kokilaben Dhirubhai Ambani Hospital", mobile: "+1234567890", address:"Thane", rating:"4.5★" },
+    { name: "Breach Candy Hospital", mobile: "+1234567890", address:"Thane", rating:"4.5★" },
+    { name: "Hinduja Hospital", mobile: "+1234567890", address:"Thane", rating:"4.5★" },
+    { name: "Tata Memorial Hospital", mobile: "+1234567890", address:"Thane", rating:"4.5★" },
+    { name: "Bombay Hospital", mobile: "+1234567890", address:"Thane", rating:"4.5★" },
+    { name: "Nanavati Super Speciality Hospital", mobile: "+1234567890", address:"Thane", rating:"4.5★" },
+    { name: "Sir H. N. Reliance Foundation Hospital and Research Centre", mobile: "+1234567890", address:"Thane", rating:"4.5★" },
+    { name: "Wockhardt Hospital", mobile: "+1234567890", address:"Thane", rating:"4.5★" }
+  ]
 
   useEffect(() => {
     getAppointments()
@@ -43,8 +45,8 @@ const Test = () => {
 
 
 
-    await setDoc(doc(db, "doctors", `${ID}`), {
-      DocData: Doc
+    await setDoc(doc(db, "hospitals", `${ID}`), {
+      HosData: hos
     })
     console.log("add")
   }
@@ -68,33 +70,9 @@ const Test = () => {
   const handleOpen = () => setOpen(!open);
 
   return (
-    <>
-      <Button onClick={handleOpen} variant="gradient">
-        Open Dialog
-      </Button>
-      <Dialog open={open} handler={handleOpen}>
-        <DialogHeader>Its a simple dialog.</DialogHeader>
-        <DialogBody>
-          The key to more success is to have a lot of pillows. Put it this way,
-          it took me twenty five years to get these plants, twenty five years of
-          blood sweat and tears, and I&apos;m never giving up, I&apos;m just
-          getting started. I&apos;m up to something. Fan luv.
-        </DialogBody>
-        <DialogFooter>
-          <Button
-            variant="text"
-            color="red"
-            onClick={handleOpen}
-            className="mr-1"
-          >
-            <span>Cancel</span>
-          </Button>
-          <Button variant="gradient" color="green" onClick={handleOpen}>
-            <span>Confirm</span>
-          </Button>
-        </DialogFooter>
-      </Dialog>
-    </>
+   <div>
+    <button onClick={handleClick}>Add</button>
+   </div>
   );
 }
 
