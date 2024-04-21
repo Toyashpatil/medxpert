@@ -33,7 +33,7 @@ const Navbar = () => {
 
                 </div>
                 <div>
-                    <img src={navHos} ></img>
+                    <Link to='/hospital'><img src={navHos} ></img></Link>
                 </div>
                 <div>
                     <button onClick={handleLogout} ><img src={navProfile} ></img></button>
