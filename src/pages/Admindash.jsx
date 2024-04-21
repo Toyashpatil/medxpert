@@ -1,10 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-const Hdashboard = () => {
+const Adashboard = () => {
   return (
-    
-      <div className="h-[100vh] gradient_wall p-4 flex items-start justify-center  w-[100vw]">
+    <div className="h-fit gradient_wall p-4 flex items-start justify-center h-[100vh] w-[100vw]">
+      <div className="h-fit gradient_wall p-4 flex items-start justify-center  w-[100vw]">
         <div className="  w-[100%] space-y-2">
           <nav className="bg-white shadow">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -12,20 +11,27 @@ const Hdashboard = () => {
                 <div className="flex">
                   {/* Logo/Title */}
                   <div className="flex-shrink-0 flex items-center">
-                    <span className="text-xl font-bold">
-                      Hospital Admin Dashboard
-                    </span>
+                    <span className="text-xl font-bold">Admin Dashboard</span>
                   </div>
                   {/* Navigation Links */}
                   <div className="hidden sm:-my-px sm:ml-6 sm:flex">
-                    <Link className="inline-flex items-center px-4 py-2 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300" to="/hospital-dashboard">Home</Link>
-
-                    <Link className="inline-flex items-center px-4 py-2 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300" to="/hospital-adddoc">Doctors</Link>
+                    <a
+                      href="#"
+                      className="inline-flex items-center px-4 py-2 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300"
+                    >
+                      Home
+                    </a>
                     <a
                       href="#"
                       className="ml-4 inline-flex items-center px-4 py-2 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300"
                     >
-                      Appointments
+                      Hospitals
+                    </a>
+                    <a
+                      href="#"
+                      className="ml-4 inline-flex items-center px-4 py-2 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300"
+                    >
+                      Add Hospitals
                     </a>
                   </div>
                 </div>
@@ -46,17 +52,17 @@ const Hdashboard = () => {
               {/* Container 1: Appointments Today */}
               <div className="bg-white rounded-md shadow-md p-6 flex-1">
                 <h2 className="text-lg font-semibold text-gray-800 mb-4">
-                  Appointments Today
+                  Total Doctors
                 </h2>
-                <p className="text-3xl font-bold text-blue-500">10</p>
+                <p className="text-3xl font-bold text-blue-500">530</p>
                 <p className="text-sm text-gray-500">
                   as of <span className="font-semibold">21st April, 2024</span>
                 </p>
               </div>
-              {/* Container 2: Total Doctors */}
+              {/* Container 2: Total Hospitals */}
               <div className="bg-white rounded-md shadow-md p-6 flex-1">
                 <h2 className="text-lg font-semibold text-gray-800 mb-4">
-                  Total Doctors
+                  Total Hospitals
                 </h2>
                 <p className="text-3xl font-bold text-green-500">50</p>
                 <p className="text-sm text-gray-500">in the hospital</p>
@@ -71,11 +77,10 @@ const Hdashboard = () => {
               </div>
             </div>
           </div>
-
         </div>
       </div>
-    
+    </div>
   );
 };
 
-export default Hdashboard;
+export default Adashboard;

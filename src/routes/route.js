@@ -17,6 +17,9 @@ import Hospital from "../pages/Hospital";
 import Hlogin from "../pages/Hlogin";
 import Hdashboard from "../pages/Hdashboard";
 import Hadddoc from "../pages/Hadddoc";
+import Alogin from "../pages/Adminlogin";
+import Adash from "../pages/Admindash";
+import Aaddhosp from '../pages/Adminaddhosp';
 const routes = [
     {
         path: "/",
@@ -90,6 +93,18 @@ const routes = [
     {
         path:"/hospital-adddoc",
         element:<Hadddoc/>,
+    },
+    {
+        path:"/adminlogin",
+        element:<Alogin/>,
+    },
+    {
+        path:"/adash",
+        element:<Adash/>,
+    },
+    {
+        path:"/aaddhosp",
+        element:<Aaddhosp/>,
     }
 
 
