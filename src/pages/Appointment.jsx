@@ -148,7 +148,7 @@ const Appointment = () => {
 
     return (
 
-        <div className='h-[100vh] gradient_wall p-4 flex items-start justify-center  w-[100vw]'>
+        <div className='h-fit gradient_wall p-4 flex items-start justify-center  w-[100vw]'>
 
             <div className=' w-[100%] space-y-3'>
                 {/* <div></div> */}
