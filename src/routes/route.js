@@ -14,6 +14,9 @@ import Details from "../pages/Details";
 import Settings from "../pages/Settings";
 import login from "../pages/Login";
 import Hospital from "../pages/Hospital";
+import Hlogin from "../pages/Hlogin";
+import Hdashboard from "../pages/Hdashboard";
+import Hadddoc from "../pages/Hadddoc";
 const routes = [
     {
         path: "/",
@@ -75,7 +78,20 @@ const routes = [
     {
         path:"/hospital",
         element:<Hospital/>,
+    },
+    {
+        path:"/hospital-login",
+        element:<Hlogin/>,
+    },
+    {
+        path:"/hospital-dashboard",
+        element:<Hdashboard/>,
+    },
+    {
+        path:"/hospital-adddoc",
+        element:<Hadddoc/>,
     }
+
 
 
 ];
