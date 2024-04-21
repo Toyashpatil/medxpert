@@ -1,6 +1,66 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
+import { Link } from "react-router-dom";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase";
+import { update } from "firebase/database";
+import { setDoc } from "firebase/firestore";
 
 const Aaddhosp = () => {
+  const uId = localStorage.getItem('user-id')
+  const [updatedHos, setUpdatedHos] = useState({
+    name: "",
+  })
+
+  const [newHos, setNewHos] = useState({
+    hospitalName:"",
+    city:"",
+    mobile:"",
+    ratings:""})
+
+  const getHospital = async () => {
+    const docRef = doc(db, "hospitals", `${uId}`);
+    const docSnap = await getDoc(docRef);
+
+
+    if (docSnap.exists()) {
+      setUpdatedHos(docSnap.data().HosData)
+      console.log("Document data:", docSnap.data().HosData);
+    } else {
+      // docSnap.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewHos((prev) => {
+      return ({
+        ...prev,
+        [name]: value
+      })
+    })
+  }
+  useEffect(() => {
+    getHospital()
+
+
+
+  }, [])
+  const handleClick = async (e) => {
+    e.preventDefault()
+    await setDoc(doc(db, "hospitals", `${uId}`), {
+      HosData: [...updatedHos, {
+        name:newHos.hospitalName,
+        mobile:newHos.mobile,
+        address:newHos.city,
+        rating:newHos.ratings,
+      }]
+    });
+
+    console.log('first')
+
+  }
+  // console.log(updatedHos)
+  console.log(newHos)
   return (
     <div>
       <div className="h-fit gradient_wall p-4 flex items-start justify-center  w-[100vw]">
@@ -17,24 +77,9 @@ const Aaddhosp = () => {
                   </div>
                   {/* Navigation Links */}
                   <div className="hidden sm:-my-px sm:ml-6 sm:flex">
-                    <a
-                      href="#"
-                      className="inline-flex items-center px-4 py-2 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300"
-                    >
-                      Home
-                    </a>
-                    <a
-                      href="#"
-                      className="ml-4 inline-flex items-center px-4 py-2 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300"
-                    >
-                      Doctors
-                    </a>
-                    <a
-                      href="#"
-                      className="ml-4 inline-flex items-center px-4 py-2 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300"
-                    >
-                      Appointments
-                    </a>
+                    <Link className="inline-flex items-center px-4 py-2 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300" to="/adash">Home</Link>
+
+                    <Link className="inline-flex items-center px-4 py-2 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300" to="/aaddhosp">Add Hospitals</Link>
                   </div>
                 </div>
                 {/* Logout Button */}
@@ -61,7 +106,7 @@ const Aaddhosp = () => {
                 >
                   Hospital Name
                 </label>
-                <input
+                <input onChange={handleChange}
                   type="text"
                   id="hospitalName"
                   name="hospitalName"
@@ -79,7 +124,7 @@ const Aaddhosp = () => {
                   Age of Hospital (in years)
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   id="ageInYears"
                   name="ageInYears"
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
@@ -97,7 +142,7 @@ const Aaddhosp = () => {
                   >
                     City
                   </label>
-                  <input
+                  <input onChange={handleChange}
                     type="text"
                     id="city"
                     name="city"
@@ -126,34 +171,34 @@ const Aaddhosp = () => {
               {/* Password */}
               <div className="mb-4">
                 <label
-                  htmlFor="password"
+                  htmlFor="Contact Number"
                   className="block text-gray-700 font-medium mb-2"
                 >
-                  Password
+                  Enter Contact Number
                 </label>
-                <input
-                  type="password"
+                <input onChange={handleChange}
+                  type="text"
                   id="password"
-                  name="password"
+                  name="mobile"
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-                  placeholder="Enter password"
+                  placeholder="Enter Contact Number"
                   required=""
                 />
               </div>
               {/* Government ID */}
               <div className="mb-4">
                 <label
-                  htmlFor="governmentId"
+                  htmlFor="Ratings"
                   className="block text-gray-700 font-medium mb-2"
                 >
-                  Government ID provided to the hospital
+                  Enter ratings 
                 </label>
-                <input
+                <input onChange={handleChange}
                   type="text"
                   id="governmentId"
-                  name="governmentId"
+                  name="ratings"
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-                  placeholder="Enter government ID"
+                  placeholder="Enter Rating"
                   required=""
                 />
               </div>
@@ -178,6 +223,7 @@ const Aaddhosp = () => {
               {/* Submit Button */}
               <div className="flex justify-center">
                 <button
+                onClick={handleClick}
                   type="submit"
                   className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
                 >
