@@ -9,14 +9,7 @@ import { auth } from '../firebase'
 
 const Navbar = () => {
 
-    const handleLogout = () => {
-        signOut(auth).then(() => {
-            // Sign-out successful.
-            console.log("OUT")
-        }).catch((error) => {
-            // An error happened.
-        });
-    }
+    
     return (
         <div className=' fixed bottom-0 z-10  w-[100%] flex items-center justify-center'>
             <div className='flex gap-14  rounded-lg shadow-md drop-shadow-md  p-3  w-[100%] items-center bg-[#EBC3F5] justify-center'>
@@ -36,7 +29,7 @@ const Navbar = () => {
                     <Link to='/hospital'><img src={navHos} ></img></Link>
                 </div>
                 <div>
-                    <button onClick={handleLogout} ><img src={navProfile} ></img></button>
+                   <Link to='/settings'> <button  ><img src={navProfile} ></img></button></Link>
                 </div>
             </div>
         </div>

@@ -7,13 +7,28 @@ import appointment from "../assets/Images/appointmenticon.svg"
 import gov from "../assets/Images/govticon.svg"
 import logout from "../assets/Images/Logoutlogouticon.svg"
 import main from "../assets/Images/mainphoto.svg"
+import { getAuth, signOut } from "firebase/auth";
+import { auth } from '../firebase'
+import authContext from '../context/authContext'
+import { useContext } from 'react'
 const Settings = () => {
 
+    const { initialUserDet } = useContext(authContext);
     const navigate = useNavigate();
 
     const handleBack = () => {
         navigate(-1)
     }
+    const handleLogout = () => {
+        signOut(auth).then(() => {
+            // Sign-out successful.
+            navigate('/home')
+        }).catch((error) => {
+            // An error happened.
+        });
+    }
+
+    
     const handleChange = (e) => {
         let { value, name } = e.target
         console.log(value, name)
@@ -28,57 +43,51 @@ const Settings = () => {
                     <img src={main}></img>
                 </div>
                 <div className=' flex items-center justify-center'>
-                    <h1 className='text-3xl font-extrabold '>Smit Patil</h1>
+                    <h1 className='text-3xl font-extrabold  '>{initialUserDet.name}</h1>
                 </div>
-                <div className='absolute w-[100vw] h-[0vh] left-0 top-73 border border-gray-500 transform rotate-0.15deg'>
-                </div>
-                <div className='flex items-center'>
-                    <div className='p-5 justify-start'>
-                        <img src={profile}></img>
+                
 
+                <div className='mt-6'>
+                    <div className='p-5 border-t-[2px] border-b-[2px] border-solid border-gray-500 flex w-full'>
+                        <div className=' flex justify-between w-full items-center'>
+                            <div className='flex gap-4 justify-center items-center'>
+                            <img src={profile}></img>
+                            <p>My Profile</p>
+                            </div>
+                            <img src={arrow}></img>
+                        </div>
+                        
                     </div>
-                    <div className='p-5 text-2xl'>My Profile</div>
-                    <div className=''>
-                        <img src={arrow}></img>
+                    <div className='p-5 border-b-[2px] border-solid border-gray-500 flex w-full'>
+                        <div className=' flex justify-between w-full items-center'>
+                            <div className='flex gap-4 justify-center items-center'>
+                            <img src={appointment}></img>
+                            <p>Appointments</p>
+                            </div>
+                            <img src={arrow}></img>
+                        </div>
+                        
                     </div>
-                </div>
-                <div className='absolute w-[100vw] h-[0vh] left-0 top-73 border border-gray-500 transform rotate-0.15deg'>
-                </div>
-                <div className='flex items-center'>
-                    <div className='p-5 justify-start'>
-                        <img src={appointment}></img>
-
+                    <div className='p-5 border-b-[2px] border-solid border-gray-500 flex w-full'>
+                        <div className=' flex justify-between w-full items-center'>
+                            <div className='flex gap-4 justify-center items-center'>
+                            <img src={gov}></img>
+                            <p>Government Policies</p>
+                            </div>
+                            <img src={arrow}></img>
+                        </div>
+                        
                     </div>
-                    <div className='p-5 text-2xl'>Appointments</div>
-                    <div className=''>
-                        <img src={arrow}></img>
+                    <div className='p-5 border-b-[2px] border-solid border-gray-500 flex w-full'>
+                        <div onClick={handleLogout}  className=' flex justify-between w-full items-center'>
+                            <div className='flex gap-4 justify-center items-center'>
+                            <img src={logout}></img>
+                            <p>Logout</p>
+                            </div>
+                            <img src={arrow}></img>
+                        </div>
+                        
                     </div>
-                </div>
-                <div className='absolute w-[100vw] h-[0vh] left-0 top-73 border border-gray-500 transform rotate-0.15deg'>
-                </div>
-                <div className='flex items-center'>
-                    <div className='p-5 justify-start'>
-                        <img src={gov}></img>
-
-                    </div>
-                    <div className='p-5 text-2xl'>Government Policies</div>
-                    <div className=''>
-                        <img src={arrow}></img>
-                    </div>
-                </div>
-                <div className='absolute w-[100vw] h-[0vh] left-0 top-73 border border-gray-500 transform rotate-0.15deg'>
-                </div>
-                <div className='flex items-center'>
-                    <div className='p-5 justify-start'>
-                        <img src={logout}></img>
-
-                    </div>
-                    <div className='p-5 text-2xl'>Logout</div>
-                    <div className=''>
-                        <img src={arrow}></img>
-                    </div>
-                </div>
-                <div className='absolute w-[100vw] h-[0vh] left-0 top-73 border border-gray-500 transform rotate-0.15deg'>
                 </div>
 
                 
