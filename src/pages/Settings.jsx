@@ -136,7 +136,7 @@ const Settings = () => {
                         </Dialog>
 
                     </div>
-                    {/* <div className='p-5 border-b-[2px] border-solid border-gray-500 flex w-full'>
+                  <div className='p-5 border-b-[2px] border-solid border-gray-500 flex w-full'>
                         <div className=' flex justify-between w-full items-center'>
                             <div className='flex gap-4 justify-center items-center'>
                                 <img src={appointment}></img>
@@ -145,8 +145,8 @@ const Settings = () => {
                             <img src={arrow}></img>
                         </div>
 
-                    </div> */}
-                    {/* <div className='p-5 border-b-[2px] border-solid border-gray-500 flex w-full'>
+                    </div> 
+                     <div className='p-5 border-b-[2px] border-solid border-gray-500 flex w-full'>
                         <div className=' flex justify-between w-full items-center'>
                             <div className='flex gap-4 justify-center items-center'>
                                 <img src={gov}></img>
@@ -155,7 +155,7 @@ const Settings = () => {
                             <img src={arrow}></img>
                         </div>
 
-                    </div> */}
+                    </div> 
                     <div className='p-5 border-b-[2px] border-solid border-gray-500 flex w-full'>
                         <div onClick={handleLogout} className=' flex justify-between w-full items-center'>
                             <div className='flex gap-4 justify-center items-center'>
